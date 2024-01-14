@@ -12,10 +12,13 @@ namespace DreamBlast.Controllers
         private GameStates _gameState = GameStates.WaitingToStart;
 
         private ScreenController _screenController;
+        private LevelController _levelController;
 
-        public GameController(ScreenController screenController)
+        public GameController(ScreenController screenController
+            , LevelController levelController)
         {
             _screenController = screenController;
+            _levelController = levelController;
         }
 
         public void Initialize()
