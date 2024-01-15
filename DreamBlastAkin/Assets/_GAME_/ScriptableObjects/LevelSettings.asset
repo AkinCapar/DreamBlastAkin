@@ -12,4 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65118c04a0ae4487b439d636128801f, type: 3}
   m_Name: LevelSettings
   m_EditorClassIdentifier: 
-  levels: []
+  levels:
+  - LevelPrefab: {fileID: 733447416569480617, guid: 41011250a1ca249a488dd0f0dbef3d7d, type: 3}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0
+  - LevelPrefab: {fileID: 0}
+    colorsCount: 0
+    bubblesCount: 0

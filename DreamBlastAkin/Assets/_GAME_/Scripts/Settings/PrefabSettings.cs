@@ -9,6 +9,6 @@ namespace DreamBlast.Settings
     [CreateAssetMenu(fileName = nameof(PrefabSettings), menuName = Constants.MenuNames.SETTINGS + nameof(PrefabSettings))]
     public class PrefabSettings : ScriptableObject
     {
-        public GameplayScreenView GameplayScreenView;
+        public BubbleView bubbleView;
     }
 }

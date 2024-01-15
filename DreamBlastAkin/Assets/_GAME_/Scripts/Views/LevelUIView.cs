@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace DreamBlast.Views
 {
-    public class LevelView : MonoBehaviour, IInitializable, IDisposable
+    public class LevelUIView : MonoBehaviour, IInitializable, IDisposable
     {
         
         
@@ -19,7 +19,7 @@ namespace DreamBlast.Views
             
         }
         
-        public class Factory : PlaceholderFactory<Object, LevelView>
+        public class Factory : PlaceholderFactory<Object, LevelUIView>
         {
         }
     }

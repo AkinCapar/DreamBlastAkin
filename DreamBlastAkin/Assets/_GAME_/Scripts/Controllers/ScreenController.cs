@@ -4,24 +4,21 @@ using UnityEngine;
 using DreamBlast.Utilities;
 using DreamBlast.Settings;
 using DreamBlast.Views;
+using Zenject;
 
 namespace DreamBlast.Controllers
 {
     public class ScreenController
     {
         private ScreenStates _currentState;
-        private GameplayScreenView _gameplayScreenView;
         
         #region Injection
 
-        private readonly PrefabSettings _prefabSettings;
-        private readonly GameplayScreenView.Factory _gameplayScreenViewFactory;
+        private SignalBus _signalBus;
 
-        public ScreenController(PrefabSettings prefabSettings
-            , GameplayScreenView.Factory gameplayScreenViewFactory)
+        public ScreenController(SignalBus signalBus)
         {
-            _prefabSettings = prefabSettings;
-            _gameplayScreenViewFactory = gameplayScreenViewFactory;
+            _signalBus = signalBus;
         }
 
         #endregion
@@ -43,16 +40,15 @@ namespace DreamBlast.Controllers
             switch (_currentState)
             {
                 case ScreenStates.GameplayState:
-                    CreateGameplayScreen();
+                    SwitchToGameplayScreen();
                     break;
                 
             }
         }
 
-        private void CreateGameplayScreen()
+        private void SwitchToGameplayScreen()
         {
-            _gameplayScreenView = _gameplayScreenViewFactory.Create(_prefabSettings.GameplayScreenView);
-            _gameplayScreenView.Initialize();
+            _signalBus.Fire<SwitchedToGameplayScreenSignal>();
         }
 
         private void ClearScreens()
