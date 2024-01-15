@@ -1,19 +1,25 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
-public class GameplayScreenView : MonoBehaviour, IInitializable, IDisposable
+namespace DreamBlast.Views
 {
-    public void Initialize()
+    public class GameplayScreenView : MonoBehaviour, IInitializable, IDisposable
     {
-    }
+        public void Initialize()
+        {
+            Debug.Log("gameplay screen view is initialized");
+        }
 
-    public void Dispose()
-    {
+        public void Dispose()
+        {
+            Debug.Log("gameplay screen view is disposed");
+        }
+
+
+        public class Factory : PlaceholderFactory<Object, GameplayScreenView>
+        {
+        }
     }
-    
-    
-    public class Factory : PlaceholderFactory<UnityEngine.Object, GameplayScreenView> {}
 }

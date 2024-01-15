@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DreamBlast.Utilities;
+using DreamBlast.Views;
 using UnityEngine;
 
 namespace DreamBlast.Settings

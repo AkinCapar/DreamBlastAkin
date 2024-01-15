@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using DreamBlast.Controllers;
+using DreamBlast.Views;
 
 namespace DreamBlast.Installer
 {
@@ -10,7 +9,6 @@ namespace DreamBlast.Installer
     {
         public override void InstallBindings()
         {
-            
             //CONTROLLERS
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
             Container.Bind<ScreenController>().AsSingle();
@@ -18,8 +16,13 @@ namespace DreamBlast.Installer
             
             //MODELS
             Container.Bind<LevelModel>().AsSingle();
+            Container.Bind<LevelView>().AsSingle();
             
+            //FACTORIES
             Container.BindFactory<Object, GameplayScreenView, GameplayScreenView.Factory>().FromFactory<PrefabFactory<GameplayScreenView>>();
+            Container.BindFactory<Object, LevelView, LevelView.Factory>().FromFactory<PrefabFactory<LevelView>>();
+            
+            
             GameSignalsInstaller.Install(Container);
         }
     }

@@ -62,6 +62,7 @@ namespace DreamBlast.Controllers
             if(_gameState != GameStates.WaitingToStart) { return;}
             
             _screenController.Initialize();
+            _levelController.Initialize();
             _gameState = GameStates.Playing;
         }
 

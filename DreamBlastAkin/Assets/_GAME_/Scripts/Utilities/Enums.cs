@@ -14,4 +14,14 @@ namespace DreamBlast.Utilities
     {
         GameplayState
     }
+
+    public enum BubbleColors
+    {
+        Blue,
+        Green,
+        Yellow,
+        Red,
+        Pink,
+        Purple
+    }
 }

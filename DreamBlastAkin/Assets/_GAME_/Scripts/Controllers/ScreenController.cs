@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DreamBlast.Utilities;
 using DreamBlast.Settings;
-using UnityEngine.SocialPlatforms.GameCenter;
-using Zenject;
+using DreamBlast.Views;
 
 namespace DreamBlast.Controllers
 {
