@@ -13,14 +13,17 @@ namespace DreamBlast.Controllers
         private SignalBus _signalBus;
         private BubblesSettings _bubblesSettings;
         private BubbleView.Factory _bubbleViewFactory;
+        private BubblesController _bubblesController;
 
         public BubblesSpawnController(SignalBus signalBus
             , BubblesSettings bubblesSettings
-            , BubbleView.Factory bubbleViewFactory)
+            , BubbleView.Factory bubbleViewFactory
+            , BubblesController bubblesController)
         {
             _signalBus = signalBus;
             _bubblesSettings = bubblesSettings;
             _bubbleViewFactory = bubbleViewFactory;
+            _bubblesController = bubblesController;
         }
 
         public void Initialize()
@@ -51,6 +54,7 @@ namespace DreamBlast.Controllers
                 BubbleView view = _bubbleViewFactory.Create(
                     bubbleTypes[Random.Range(0, bubbleTypes.Count)],
                     spawnPositions[Random.Range(0, spawnPositions.Count)], i);
+                _bubblesController.AddBubble(view);
             }
         }
     }

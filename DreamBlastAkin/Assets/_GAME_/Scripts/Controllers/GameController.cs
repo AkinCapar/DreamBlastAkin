@@ -14,14 +14,17 @@ namespace DreamBlast.Controllers
         private ScreenController _screenController;
         private LevelController _levelController;
         private BubblesSpawnController _bubblesSpawnController;
+        private BubblesController _bubblesController;
 
         public GameController(ScreenController screenController
             , LevelController levelController
-            , BubblesSpawnController bubblesSpawnController)
+            , BubblesSpawnController bubblesSpawnController
+            , BubblesController bubblesController)
         {
             _screenController = screenController;
             _levelController = levelController;
             _bubblesSpawnController = bubblesSpawnController;
+            _bubblesController = bubblesController;
         }
 
         public void Initialize()
@@ -65,6 +68,7 @@ namespace DreamBlast.Controllers
             if(_gameState != GameStates.WaitingToStart) { return;}
             
             _levelController.Initialize();
+            _bubblesController.Initialize();
             _bubblesSpawnController.Initialize();
             _screenController.Initialize();
             _gameState = GameStates.Playing;

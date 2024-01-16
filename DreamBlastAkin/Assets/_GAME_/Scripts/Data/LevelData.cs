@@ -12,5 +12,6 @@ namespace DreamBlast.Data
         public GameplayScreenView LevelPrefab;
         public int colorsCount;
         public int bubblesCount;
+        public int minBlastableContactAmount;
     }
 }

@@ -35,6 +35,7 @@ namespace DreamBlast.Installer
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
             Container.Bind<ScreenController>().AsSingle();
             Container.Bind<LevelController>().AsSingle();
+            Container.Bind<BubblesController>().AsSingle();
             Container.Bind<BubblesSpawnController>().AsSingle();
             
             //FACTORIES

@@ -7,4 +7,5 @@ namespace DreamBlast
     public readonly struct SwitchedToGameplayScreenSignal
     {
     }
+    
 }
