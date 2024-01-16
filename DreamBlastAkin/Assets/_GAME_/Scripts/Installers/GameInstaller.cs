@@ -46,8 +46,8 @@ namespace DreamBlast.Installer
         
         private void InstallBubbles()
         {
-            Container.BindFactory<BubbleData, BubbleView, BubbleView.Factory>()
-                .FromPoolableMemoryPool<BubbleData, BubbleView, BubbleView.Pool>(poolBinder => poolBinder
+            Container.BindFactory<BubbleData, Transform, int, BubbleView, BubbleView.Factory>()
+                .FromPoolableMemoryPool<BubbleData, Transform, int, BubbleView, BubbleView.Pool>(poolBinder => poolBinder
                     .WithInitialSize(100)
                     .FromComponentInNewPrefab(_prefabSettings.bubbleView)
                     .UnderTransform(_bubbleContainer));

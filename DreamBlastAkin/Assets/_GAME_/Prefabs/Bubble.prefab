@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4933711837811400873}
   - component: {fileID: 7193502229785941167}
   - component: {fileID: -5520567559104993124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4872622556063046321}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &4933711837811400873
 CircleCollider2D:
@@ -69,7 +69,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 80
+  m_Radius: 82.5
 --- !u!50 &7193502229785941167
 Rigidbody2D:
   serializedVersion: 4
@@ -82,10 +82,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 100
+  m_GravityScale: 45
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -93,7 +93,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -109,8 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3183faa5205a2443fbf98d5555fb95c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleBodyImage: {fileID: 0}
-  bubbleFaceImage: {fileID: 0}
+  bubbleBodyImage: {fileID: 5383299041836154152}
+  bubbleFaceImage: {fileID: 2076925129260803451}
+  onSpawnOffsetY: 200
+  additionalSpeed: 1000
+  _rigidbody: {fileID: 7193502229785941167}
   _bubbleColor: 0
 --- !u!1 &7503654795590660436
 GameObject:

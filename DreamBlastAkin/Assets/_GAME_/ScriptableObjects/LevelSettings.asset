@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - LevelPrefab: {fileID: 733447416569480617, guid: 41011250a1ca249a488dd0f0dbef3d7d, type: 3}
-    colorsCount: 0
-    bubblesCount: 0
+    colorsCount: 6
+    bubblesCount: 90
   - LevelPrefab: {fileID: 0}
     colorsCount: 0
     bubblesCount: 0
