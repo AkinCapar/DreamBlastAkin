@@ -17,10 +17,8 @@ namespace DreamBlast.Views
         [SerializeField] private Image bubbleBodyImage;
         [SerializeField] private Image bubbleFaceImage;
         [SerializeField] private float onSpawnOffsetY;
-        [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private int maxContactAmount;
         private List<Collider2D> _contactingColliders;
-        public BubbleColors _bubbleColor;
+        private BubbleColors _bubbleColor;
         private IMemoryPool _pool;
 
         #region Injection
@@ -48,17 +46,17 @@ namespace DreamBlast.Views
 
         public void OnPointerUp()
         {
-            BubbleCheck();
+            _bubblesController.CheckBubble(this);
         }
 
-        public void BubbleCheck()
+        public List<Collider2D> GetContactColliders()
         {
-            if (_contactingColliders.Count < 1)
-            {
-                return;
-            }
+            return _contactingColliders;
+        }
 
-            _bubblesController.CheckBubble(this, _contactingColliders);
+        public BubbleColors GetBubbleColor()
+        {
+            return _bubbleColor;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -81,12 +79,6 @@ namespace DreamBlast.Views
         {
             _pool.Despawn(this);
         }
-
-        public Rigidbody2D GetRigidBody2D()
-        {
-            return _rigidbody;
-        }
-
         public void OnDespawned()
         {
         }

@@ -50,7 +50,7 @@ namespace DreamBlast.Controllers
             _gameplayScreenView = _gameplayScreenViewFactory.Create(currentLevelData.LevelPrefab);
             _gameplayScreenView.Initialize();
             _bubblesSpawnController.SpawnBubbles(currentLevelData.bubblesCount,
-                _gameplayScreenView.SpawnPositions()); //.Forget();
+                _gameplayScreenView.SpawnPositions(), currentLevelData.colorsCount);
         }
 
         public void Dispose()

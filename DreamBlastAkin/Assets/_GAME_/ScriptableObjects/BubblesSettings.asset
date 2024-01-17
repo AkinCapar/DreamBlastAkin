@@ -30,4 +30,4 @@ MonoBehaviour:
     bubbleColor: 3
   - bubbleBodySprite: {fileID: 21300000, guid: ed5ccd1fb575e4fc888b8ea3f526ebdd, type: 3}
     bubbleFaceSprite: {fileID: 21300000, guid: 0a28b21cda4474c55bd650b06f93b49c, type: 3}
-    bubbleColor: 0
+    bubbleColor: 2

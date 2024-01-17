@@ -10,7 +10,7 @@ namespace DreamBlast.Controllers
     public class BubblesController
     {
         private List<BubbleView> _remainingBubbles;
-        private List<BubbleView> _bublesToBeBlasted;
+        private List<BubbleView> _bubblesToBeBlasted;
         private LevelSettings _levelSettings;
         private LevelModel _levelModel;
 
@@ -24,37 +24,63 @@ namespace DreamBlast.Controllers
         public void Initialize()
         {
             _remainingBubbles = new List<BubbleView>();
-            _bublesToBeBlasted = new List<BubbleView>();
+            _bubblesToBeBlasted = new List<BubbleView>();
         }
 
-        public void AddBubble(BubbleView bubble)
+        public void AddRemainingBubble(BubbleView bubble)
         {
             _remainingBubbles.Add(bubble);
         }
 
-        public void CheckBubble(BubbleView bubbleView, List<Collider2D> contactColliders)
+        public void CheckBubble(BubbleView startBubble)
         {
-            for (int i = 0; i < contactColliders.Count; i++)
+            if (startBubble == null)
             {
-                if (contactColliders[i].GetComponent<BubbleView>() != null)
-                {
-                    BubbleView contactBubble = contactColliders[i].GetComponent<BubbleView>();
+                return;
+            }
 
-                    if (bubbleView._bubbleColor == contactBubble._bubbleColor && !_bublesToBeBlasted.Contains(contactBubble))
+            HashSet<BubbleView> visitedBubbles = new HashSet<BubbleView>();
+            Queue<BubbleView> bubblesToCheck = new Queue<BubbleView>();
+
+            bubblesToCheck.Enqueue(startBubble);
+            visitedBubbles.Add(startBubble);
+
+            while (bubblesToCheck.Count > 0)
+            {
+                BubbleView currentBubble = bubblesToCheck.Dequeue();
+
+                if (!_bubblesToBeBlasted.Contains(currentBubble))
+                {
+                    _bubblesToBeBlasted.Add(currentBubble);
+                }
+
+                List<Collider2D> contactColliders = currentBubble.GetContactColliders();
+
+                foreach (Collider2D collider in contactColliders)
+                {
+                    BubbleView contactBubble = collider.GetComponent<BubbleView>();
+
+                    if (contactBubble != null &&
+                        currentBubble.GetBubbleColor() == contactBubble.GetBubbleColor() &&
+                        !visitedBubbles.Contains(contactBubble))
                     {
-                        _bublesToBeBlasted.Add(contactBubble);
+                        visitedBubbles.Add(contactBubble);
+                        bubblesToCheck.Enqueue(contactBubble);
                     }
                 }
             }
-        }
 
-        private void BlastBubbles()
-        {
-            foreach (BubbleView bubble in _bublesToBeBlasted)
+            if (_bubblesToBeBlasted.Count > _levelSettings.levels[_levelModel.CurrentLevel()].minBlastableContactAmount)
             {
-                _bublesToBeBlasted.Remove(bubble);
-                bubble.BlastBubble();
+                foreach (BubbleView bubble in _bubblesToBeBlasted)
+                {
+                    bubble.BlastBubble();
+                    _remainingBubbles.Remove(bubble);
+                }
             }
+            
+            Debug.Log("remaining bubbles: " + _remainingBubbles.Count);
+            _bubblesToBeBlasted.Clear();
         }
     }
 }

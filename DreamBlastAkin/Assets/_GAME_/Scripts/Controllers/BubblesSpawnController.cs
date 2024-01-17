@@ -44,7 +44,7 @@ namespace DreamBlast.Controllers
                 await UniTask.Delay(50);
             }
         }*/
-        public void SpawnBubbles(int bubbleAmount, List<Transform> spawnPositions)
+        public void SpawnBubbles(int bubbleAmount, List<Transform> spawnPositions, int colorCount)
         {
             Debug.Log(bubbleAmount + " bubbles are spawned");
             var bubbleTypes = _bubblesSettings.bubbleTypes;
@@ -52,9 +52,9 @@ namespace DreamBlast.Controllers
             for (int i = 0; i < bubbleAmount; i++)
             {
                 BubbleView view = _bubbleViewFactory.Create(
-                    bubbleTypes[Random.Range(0, bubbleTypes.Count)],
+                    bubbleTypes[Random.Range(0, colorCount)],
                     spawnPositions[Random.Range(0, spawnPositions.Count)], i);
-                _bubblesController.AddBubble(view);
+                _bubblesController.AddRemainingBubble(view);
             }
         }
     }
