@@ -46,7 +46,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 6142349986493820961}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 88f27bfaebe124cf2ad9602a3086b940, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -114,9 +114,6 @@ MonoBehaviour:
   bubbleBodyImage: {fileID: 5383299041836154152}
   bubbleFaceImage: {fileID: 2076925129260803451}
   onSpawnOffsetY: 200
-  _rigidbody: {fileID: 0}
-  maxContactAmount: 0
-  _bubbleColor: 0
 --- !u!114 &9181714561780249546
 MonoBehaviour:
   m_ObjectHideFlags: 0

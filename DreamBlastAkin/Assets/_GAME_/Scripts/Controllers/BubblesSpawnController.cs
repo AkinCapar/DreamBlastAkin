@@ -46,7 +46,6 @@ namespace DreamBlast.Controllers
         }*/
         public void SpawnBubbles(int bubbleAmount, List<Transform> spawnPositions, int colorCount)
         {
-            Debug.Log(bubbleAmount + " bubbles are spawned");
             var bubbleTypes = _bubblesSettings.bubbleTypes;
             
             for (int i = 0; i < bubbleAmount; i++)

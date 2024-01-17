@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using DreamBlast.Controllers;
 using DreamBlast.Data;
 using DreamBlast.Settings;
@@ -20,6 +21,7 @@ namespace DreamBlast.Views
         private List<Collider2D> _contactingColliders;
         private BubbleColors _bubbleColor;
         private IMemoryPool _pool;
+        private bool _blasted;
 
         #region Injection
 
@@ -35,6 +37,7 @@ namespace DreamBlast.Views
 
         public void OnSpawned(BubbleData bubbleData, Transform spawnPos, int spawnNo, IMemoryPool pool)
         {
+            _blasted = false;
             transform.parent = spawnPos.parent.parent;
             transform.position = spawnPos.position + new Vector3(Random.Range(-.5f, .5f), spawnNo * onSpawnOffsetY, 0);
             bubbleBodyImage.sprite = bubbleData.bubbleBodySprite;
@@ -46,7 +49,10 @@ namespace DreamBlast.Views
 
         public void OnPointerUp()
         {
-            _bubblesController.CheckBubble(this);
+            if (!_blasted)
+            { 
+                _bubblesController.CheckBubble(this);
+            }
         }
 
         public List<Collider2D> GetContactColliders()
@@ -76,6 +82,12 @@ namespace DreamBlast.Views
         }
 
         public void BlastBubble()
+        {
+            _blasted = true;
+            transform.DOScale(Vector3.zero, .25f).OnComplete(OnBlastTweenComplete);
+        }
+
+        private void OnBlastTweenComplete()
         {
             _pool.Despawn(this);
         }

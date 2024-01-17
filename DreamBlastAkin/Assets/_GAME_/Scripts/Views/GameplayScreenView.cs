@@ -1,30 +1,26 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
 namespace DreamBlast.Views
 {
-    public class GameplayScreenView : MonoBehaviour, IInitializable, IDisposable
+    public class GameplayScreenView : MonoBehaviour
     {
-        [SerializeField] private List<Transform> _spawnPositions;
-        public void Initialize()
+        [SerializeField] private List<Transform> spawnPositions;
+        [SerializeField] private TextMeshProUGUI levelText;
+        public void Initialize(int levelCount)
         {
             Debug.Log("gameplay screen view is initialized");
+            levelText.text = "LEVEL " + levelCount + 1;
         }
 
         public List<Transform> SpawnPositions()
         {
-            return _spawnPositions;
+            return spawnPositions;
         }
-
-        public void Dispose()
-        {
-            Debug.Log("gameplay screen view is disposed");
-        }
-
-
         public class Factory : PlaceholderFactory<Object, GameplayScreenView>
         {
         }

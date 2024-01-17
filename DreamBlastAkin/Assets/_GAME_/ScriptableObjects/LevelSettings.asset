@@ -14,42 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - LevelPrefab: {fileID: 733447416569480617, guid: 41011250a1ca249a488dd0f0dbef3d7d, type: 3}
+    colorsCount: 3
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: 5c43442134f3d48fa81836e96a113e9e, type: 3}
+    colorsCount: 4
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: ab529063a3b374ef09557689d3532447, type: 3}
+    colorsCount: 5
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: 0d85cdbebe7ec4f5584359bc279c8677, type: 3}
     colorsCount: 6
     bubblesCount: 45
     minBlastableContactAmount: 3
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
-  - LevelPrefab: {fileID: 0}
-    colorsCount: 0
-    bubblesCount: 0
-    minBlastableContactAmount: 0
+  - LevelPrefab: {fileID: 733447416569480617, guid: b87fd9fa7c6054cff83a46e1410a0652, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: 1afc2239028824db990cc741bbe01a0a, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: 4628a2f4718904ae48ffb7d0aa224efa, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: ae0ab002f7cab4401a32fb5aea57531b, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: 9e3ef10c07b854d3f8731144282c1e6f, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3
+  - LevelPrefab: {fileID: 733447416569480617, guid: baafd329a6dd64fc5a97065a0f3bc83e, type: 3}
+    colorsCount: 6
+    bubblesCount: 45
+    minBlastableContactAmount: 3

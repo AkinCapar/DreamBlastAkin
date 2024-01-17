@@ -48,7 +48,7 @@ namespace DreamBlast.Controllers
         {
             LevelData currentLevelData = _levelSettings.levels[_levelModel.CurrentLevel()];
             _gameplayScreenView = _gameplayScreenViewFactory.Create(currentLevelData.LevelPrefab);
-            _gameplayScreenView.Initialize();
+            _gameplayScreenView.Initialize(_levelModel.CurrentLevel());
             _bubblesSpawnController.SpawnBubbles(currentLevelData.bubblesCount,
                 _gameplayScreenView.SpawnPositions(), currentLevelData.colorsCount);
         }
