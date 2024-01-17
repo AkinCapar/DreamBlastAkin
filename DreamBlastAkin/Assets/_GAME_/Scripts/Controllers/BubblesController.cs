@@ -70,7 +70,7 @@ namespace DreamBlast.Controllers
                 }
             }
 
-            if (_bubblesToBeBlasted.Count > _levelSettings.levels[_levelModel.CurrentLevel()].minBlastableContactAmount)
+            if (_bubblesToBeBlasted.Count >= _levelSettings.levels[_levelModel.CurrentLevel()].minBlastableContactAmount)
             {
                 foreach (BubbleView bubble in _bubblesToBeBlasted)
                 {
