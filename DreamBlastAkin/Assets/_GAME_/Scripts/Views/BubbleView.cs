@@ -89,10 +89,16 @@ namespace DreamBlast.Views
 
         private void OnBlastTweenComplete()
         {
+            Despawn();
+        }
+
+        public void Despawn()
+        {
             _pool.Despawn(this);
         }
         public void OnDespawned()
         {
+            transform.DOScale(Vector3.one, .1f);
         }
 
         public class Factory : PlaceholderFactory<BubbleData, Transform, int, BubbleView>

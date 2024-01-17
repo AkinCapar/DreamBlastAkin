@@ -82,6 +82,7 @@ namespace DreamBlast.Controllers
         public void Dispose()
         {
             _levelController.Dispose();
+            _bubblesController.Dispose();
         }
     }
 }

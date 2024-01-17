@@ -12,6 +12,8 @@ namespace DreamBlast.Installer
             SignalBusInstaller.Install(Container);
             
             Container.DeclareSignal<SwitchedToGameplayScreenSignal>().OptionalSubscriber();
+            Container.DeclareSignal<LevelCompletedSignal>().OptionalSubscriber();
+            Container.DeclareSignal<NoBubblesLeftToBlastSignal>().OptionalSubscriber();
         }
     }
 }

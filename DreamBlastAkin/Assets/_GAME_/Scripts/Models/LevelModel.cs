@@ -8,7 +8,7 @@ public class LevelModel
     
     public int CurrentLevel()
     {
-        return _currentLevel;
+        return _currentLevel < 10 ? _currentLevel : Random.Range(0, 10);
     }
 
     public void IncreaseCurrentLevel(int increaseAmount)

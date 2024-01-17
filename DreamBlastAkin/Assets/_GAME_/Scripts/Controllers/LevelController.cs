@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DreamBlast.Settings;
 using DreamBlast.Views;
 using DreamBlast.Data;
+using UnityEngine;
 using Zenject;
 
 namespace DreamBlast.Controllers
@@ -42,9 +43,15 @@ namespace DreamBlast.Controllers
         public void Initialize()
         {
             _signalBus.Subscribe<SwitchedToGameplayScreenSignal>(OnSwitchedToGameplayScreen);
+            _signalBus.Subscribe<NoBubblesLeftToBlastSignal>(OnNoBubblesLeftToBlastSignal);
         }
 
         private void OnSwitchedToGameplayScreen()
+        {
+            CreateLevel();
+        }
+
+        private void CreateLevel()
         {
             LevelData currentLevelData = _levelSettings.levels[_levelModel.CurrentLevel()];
             _gameplayScreenView = _gameplayScreenViewFactory.Create(currentLevelData.LevelPrefab);
@@ -53,9 +60,24 @@ namespace DreamBlast.Controllers
                 _gameplayScreenView.SpawnPositions(), currentLevelData.colorsCount);
         }
 
+
+        private void OnNoBubblesLeftToBlastSignal()
+        {
+            CompleteLevel();
+        }
+
+        private void CompleteLevel()
+        {
+            _levelModel.IncreaseCurrentLevel(1);
+            _signalBus.Fire<LevelCompletedSignal>();
+            _gameplayScreenView.DestroyGameplayScreenView();
+            CreateLevel();
+        }
+
         public void Dispose()
         {            
             _signalBus.Unsubscribe<SwitchedToGameplayScreenSignal>(OnSwitchedToGameplayScreen);
+            _signalBus.Unsubscribe<NoBubblesLeftToBlastSignal>(OnNoBubblesLeftToBlastSignal);
         }
     }
 }

@@ -4,6 +4,8 @@ using DreamBlast.Settings;
 using DreamBlast.Utilities;
 using DreamBlast.Views;
 using UnityEngine;
+using Zenject;
+using BubbleView = DreamBlast.Views.BubbleView;
 
 namespace DreamBlast.Controllers
 {
@@ -11,20 +13,24 @@ namespace DreamBlast.Controllers
     {
         private List<BubbleView> _remainingBubbles;
         private List<BubbleView> _bubblesToBeBlasted;
+        private SignalBus _signalBus;
         private LevelSettings _levelSettings;
         private LevelModel _levelModel;
 
         public BubblesController(LevelSettings levelSettings
-            , LevelModel levelModel)
+            , LevelModel levelModel
+            , SignalBus signalBus)
         {
             _levelSettings = levelSettings;
             _levelModel = levelModel;
+            _signalBus = signalBus;
         }
 
         public void Initialize()
         {
             _remainingBubbles = new List<BubbleView>();
             _bubblesToBeBlasted = new List<BubbleView>();
+            _signalBus.Subscribe<LevelCompletedSignal>(OnLevelCompletedSignal);
         }
 
         public void AddRemainingBubble(BubbleView bubble)
@@ -78,9 +84,29 @@ namespace DreamBlast.Controllers
                     _remainingBubbles.Remove(bubble);
                 }
             }
+
+            //TODO This is temporary for testing FIX THIS
+            else
+            {
+                _signalBus.Fire<NoBubblesLeftToBlastSignal>();
+            }
             
-            Debug.Log("remaining bubbles: " + _remainingBubbles.Count);
             _bubblesToBeBlasted.Clear();
+        }
+
+        private void OnLevelCompletedSignal()
+        {
+            foreach (BubbleView bubbleView in _remainingBubbles)
+            {
+                bubbleView.Despawn();
+            }
+            
+            _remainingBubbles.Clear();
+        }
+
+        public void Dispose()
+        {
+            _signalBus.Unsubscribe<LevelCompletedSignal>(OnLevelCompletedSignal);   
         }
     }
 }

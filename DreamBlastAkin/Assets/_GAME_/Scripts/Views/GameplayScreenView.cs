@@ -14,7 +14,12 @@ namespace DreamBlast.Views
         public void Initialize(int levelCount)
         {
             Debug.Log("gameplay screen view is initialized");
-            levelText.text = "LEVEL " + levelCount + 1;
+            levelText.text = "LEVEL " + (levelCount + 1);
+        }
+
+        public void DestroyGameplayScreenView()
+        {
+            Destroy(gameObject);
         }
 
         public List<Transform> SpawnPositions()
