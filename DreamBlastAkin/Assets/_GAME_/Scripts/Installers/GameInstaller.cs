@@ -29,13 +29,12 @@ namespace DreamBlast.Installer
             
             //MODELS
             Container.Bind<LevelModel>().AsSingle();
-            //Container.Bind<LevelUIView>().AsSingle();
             
             //CONTROLLERS
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
             Container.Bind<ScreenController>().AsSingle();
             Container.Bind<LevelController>().AsSingle();
-            Container.Bind<BubblesController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BubblesController>().AsSingle();
             Container.Bind<BubblesSpawnController>().AsSingle();
             
             //FACTORIES

@@ -9,13 +9,16 @@ using BubbleView = DreamBlast.Views.BubbleView;
 
 namespace DreamBlast.Controllers
 {
-    public class BubblesController
+    public class BubblesController : ITickable
     {
         private List<BubbleView> _remainingBubbles;
         private List<BubbleView> _bubblesToBeBlasted;
         private SignalBus _signalBus;
         private LevelSettings _levelSettings;
         private LevelModel _levelModel;
+        private bool _timerEnabled;
+        private float _timer;
+        private bool _stopLevelCompletionCheck;
 
         public BubblesController(LevelSettings levelSettings
             , LevelModel levelModel
@@ -38,7 +41,7 @@ namespace DreamBlast.Controllers
             _remainingBubbles.Add(bubble);
         }
 
-        public void CheckBubble(BubbleView startBubble)
+        public void CheckBubble(BubbleView startBubble, bool checkForLevelCompletion = false)
         {
             if (startBubble == null)
             {
@@ -76,22 +79,33 @@ namespace DreamBlast.Controllers
                 }
             }
 
-            if (_bubblesToBeBlasted.Count >= _levelSettings.levels[_levelModel.CurrentLevel()].minBlastableContactAmount)
+            if (_bubblesToBeBlasted.Count >=
+                _levelSettings.levels[_levelModel.CurrentLevel()].minBlastableContactAmount)
             {
-                foreach (BubbleView bubble in _bubblesToBeBlasted)
+                if (checkForLevelCompletion)
                 {
-                    bubble.BlastBubble();
-                    _remainingBubbles.Remove(bubble);
+                    _stopLevelCompletionCheck = true;
+                }
+
+                else
+                {
+                    foreach (BubbleView bubble in _bubblesToBeBlasted)
+                    {
+                        bubble.BlastBubble();
+                        _remainingBubbles.Remove(bubble);
+                    }
+
+                    StartTimerForLevelCompletionCheck();
                 }
             }
 
-            //TODO This is temporary for testing FIX THIS
-            else
-            {
-                _signalBus.Fire<NoBubblesLeftToBlastSignal>();
-            }
-            
             _bubblesToBeBlasted.Clear();
+        }
+
+        private void StartTimerForLevelCompletionCheck()
+        {
+            _timer = 0;
+            _timerEnabled = true;
         }
 
         private void OnLevelCompletedSignal()
@@ -100,13 +114,44 @@ namespace DreamBlast.Controllers
             {
                 bubbleView.Despawn();
             }
-            
+
             _remainingBubbles.Clear();
+        }
+
+        private void CheckForLevelCompletion()
+        {
+            for (int i = 0; i < _remainingBubbles.Count; i++)
+            {
+                CheckBubble(_remainingBubbles[i], true);
+                if (_stopLevelCompletionCheck)
+                {
+                    _stopLevelCompletionCheck = false;
+                    return;
+                }
+            }
+
+            _signalBus.Fire<NoBubblesLeftToBlastSignal>();
+            Debug.Log("There is no blastable bubbles contact left");
         }
 
         public void Dispose()
         {
-            _signalBus.Unsubscribe<LevelCompletedSignal>(OnLevelCompletedSignal);   
+            _signalBus.Unsubscribe<LevelCompletedSignal>(OnLevelCompletedSignal);
+        }
+
+        public void Tick()
+        {
+            if (_timerEnabled)
+            {
+                _timer += Time.deltaTime;
+            }
+
+            if (_timer > 5)
+            {
+                _timer = 0;
+                _timerEnabled = false;
+                CheckForLevelCompletion();
+            }
         }
     }
 }
