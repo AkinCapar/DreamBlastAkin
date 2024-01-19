@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db2fee399a8b445e8da94b70fae2721, type: 3}
+  m_Name: BubblesSettings 1
+  m_EditorClassIdentifier: 
+  bubbleTypes:
+  - bubbleBodySprite: {fileID: 21300000, guid: c171de22d2a20442ea4e51eaf385e180, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: 9b10ebbaf472c496a8ba89f66e39480c, type: 3}
+    bubbleColor: 0
+  - bubbleBodySprite: {fileID: 21300000, guid: 6e8a2433cb4474cb19a872db36303424, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: 71d7dd1ca33024445aef7bc7e331df67, type: 3}
+    bubbleColor: 1
+  - bubbleBodySprite: {fileID: 21300000, guid: d1669ed2c575c4ba4a48422f475e1822, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: d5024641c3a4c4a6bac6d690f8acaca0, type: 3}
+    bubbleColor: 4
+  - bubbleBodySprite: {fileID: 21300000, guid: cba8a855efa204b15a72edf02213cc95, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: 69dca75c587124752aeb3917a5afe7bf, type: 3}
+    bubbleColor: 5
+  - bubbleBodySprite: {fileID: 21300000, guid: fc5c6b4a0487943879efb780fd30cc81, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: cf58981a6928b483f9389bfb26574156, type: 3}
+    bubbleColor: 3
+  - bubbleBodySprite: {fileID: 21300000, guid: ed5ccd1fb575e4fc888b8ea3f526ebdd, type: 3}
+    bubbleFaceSprite: {fileID: 21300000, guid: 0a28b21cda4474c55bd650b06f93b49c, type: 3}
+    bubbleColor: 2

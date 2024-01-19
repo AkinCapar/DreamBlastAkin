@@ -131,6 +131,10 @@ namespace DreamBlast.Controllers
             Debug.Log("There is no blastable bubbles contact left");
         }
 
+        public List<BubbleView> GetRemainingBubbles()
+        {
+            return _remainingBubbles;
+        }
         public void Dispose()
         {
             _signalBus.Unsubscribe<LevelCompletedSignal>(OnLevelCompletedSignal);

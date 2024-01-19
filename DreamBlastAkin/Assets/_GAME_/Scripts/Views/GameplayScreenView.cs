@@ -12,7 +12,6 @@ namespace DreamBlast.Views
         [SerializeField] private TextMeshProUGUI levelText;
         public void Initialize(int levelCount)
         {
-            Debug.Log("gameplay screen view is initialized");
             levelText.text = "LEVEL " + (levelCount + 1);
         }
 
