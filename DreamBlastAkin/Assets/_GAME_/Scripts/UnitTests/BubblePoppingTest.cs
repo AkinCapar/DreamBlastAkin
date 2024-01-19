@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 
-public class PlayersAbilityToBlastBubblesTest : ZenjectIntegrationTestFixture
+public class BubblePoppingTest : ZenjectIntegrationTestFixture
 {
     private List<BubbleView> _remainingBubbles;
     private GameController _gameController;
@@ -81,7 +81,6 @@ public class PlayersAbilityToBlastBubblesTest : ZenjectIntegrationTestFixture
 
         BubbleBlastTest(BubbleColors.Red);
     }
-
 
     [UnityTest]
     public IEnumerator YellowBubbleTest()

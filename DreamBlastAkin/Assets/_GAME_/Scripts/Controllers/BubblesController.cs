@@ -115,11 +115,12 @@ namespace DreamBlast.Controllers
             _remainingBubbles.Clear();
         }
 
-        private void CheckForLevelCompletion()
+        public void CheckForLevelCompletion()
         {
             for (int i = 0; i < _remainingBubbles.Count; i++)
             {
                 CheckBubble(_remainingBubbles[i], true);
+                
                 if (_stopLevelCompletionCheck)
                 {
                     _stopLevelCompletionCheck = false;
